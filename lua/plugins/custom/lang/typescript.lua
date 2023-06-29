@@ -27,5 +27,11 @@ return {
         desc = "Run ( Watch )",
       },
     },
+    opts = {
+      ["neotest-jest"] = {
+        jestCommand = "pnpm test --",
+      },
+      ["neotest-vitest"] = {},
+    },
   },
 }
