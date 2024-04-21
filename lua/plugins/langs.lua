@@ -6,6 +6,7 @@ return {
   { import = "plugins.langs.lua" },
   { import = "plugins.langs.markdown" },
   { import = "plugins.langs.rust" },
+  { import = "plugins.langs.svelte" },
   { import = "plugins.langs.typescript" },
   { import = "plugins.langs.yaml" },
 }
