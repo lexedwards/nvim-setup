@@ -12,3 +12,7 @@ opt.expandtab = true
 -- Line Numbers
 opt.cursorline = true
 opt.number = true
+opt.relativenumber = true
+
+-- Popups
+opt.pumheight = 10

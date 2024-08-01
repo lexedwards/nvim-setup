@@ -36,6 +36,18 @@ return {
     },
   },
   {
+    "jay-babu/mason-nvim-dap.nvim",
+    dependencies = {
+      "williamboman/mason.nvim",
+    },
+    opts = {
+      ensure_installed = {
+        "delve",
+        "codelldb",
+      },
+    },
+  },
+  {
     "jay-babu/mason-null-ls.nvim",
     event = { "BufReadPre", "BufNewFile" },
     dependencies = {
@@ -44,7 +56,6 @@ return {
     },
     opts = {
       ensure_installed = {
-        "delve",
         "goimports",
         "gofumpt",
         "gomodifytags",

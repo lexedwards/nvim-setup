@@ -19,6 +19,12 @@ return {
         }, {
           { name = "buffer" },
         }),
+        formatting = {
+          format = function(_, item)
+            item.abbr = string.sub(item.abbr, 1, 20)
+            return item
+          end,
+        },
         mapping = cmp.mapping.preset.insert({
           ["<C-b>"] = cmp.mapping.scroll_docs(-4),
           ["<C-f>"] = cmp.mapping.scroll_docs(4),

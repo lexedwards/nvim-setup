@@ -10,6 +10,9 @@ return {
       },
     },
     opts = {
+      inlay_hints = {
+        enabled = true,
+      },
       servers = {
         astro = {},
         eslint = {

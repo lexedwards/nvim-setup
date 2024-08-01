@@ -5,21 +5,23 @@ return {
     opts = {
       spec = {
         mode = { "n", "v" },
-        { "<leader>f", group = "files" },
-        { "<leader>fg", group = "git" },
-        { "<leader>c", group = "code" },
+        { "<leader>td", group = "Debug" },
+        { "<leader>f", group = "Files" },
+        { "<leader>fg", group = "Git" },
+        { "<leader>c", group = "Code" },
         { "<leader>g", group = "Go To..." },
-        { "<leader><tab>", group = "tabs" },
+        { "<leader><tab>", group = "Tabs" },
+        { "<leader>t", group = "Test" },
         {
           "<leader>b",
-          group = "buffer",
+          group = "Buffer",
           expand = function()
             return require("which-key.extras").expand.buf()
           end,
         },
         {
           "<leader>w",
-          group = "windows",
+          group = "Windows",
           proxy = "<c-w>",
           expand = function()
             return require("which-key.extras").expand.win()
