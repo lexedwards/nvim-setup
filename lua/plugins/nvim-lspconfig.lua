@@ -85,8 +85,6 @@ return {
           vim.keymap.set("n", "<leader>cr", vim.lsp.buf.rename, { desc = "Rename" })
           vim.keymap.set("n", "<leader>ca", fzf.lsp_code_actions, { desc = "Action" })
           vim.keymap.set("n", "<leader>cd", vim.diagnostic.open_float, { desc = "Line Diagnostic" })
-          vim.keymap.set("n", "<leader>]d", vim.diagnostic.goto_next, { desc = "Next Diagnostic" })
-          vim.keymap.set("n", "<leader>[d", vim.diagnostic.goto_prev, { desc = "Prev Diagnostic" })
         end,
       })
     end,

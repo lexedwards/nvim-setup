@@ -5,7 +5,7 @@ return {
     opts = {
       spec = {
         mode = { "n", "v" },
-        { "<leader>td", group = "Debug" },
+        { "<leader>d", group = "Debug" },
         { "<leader>f", group = "Files" },
         { "<leader>fg", group = "Git" },
         { "<leader>c", group = "Code" },
