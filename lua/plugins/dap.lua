@@ -42,6 +42,7 @@ return {
       { "<leader>d]", ":lua require'dap'.step_into()<CR>", desc = "Step Into" },
       { "<leader>d[", ":lua require'dap'.step_out()<CR>", desc = "Step Out" },
       { "<leader>dr", ":lua require'dap'.run_to_cursor<CR>", desc = "Run to Cursor" },
+      { "<leader>du", ":lua require'dapui'.toggle({})<CR>", desc = "UI Toggle" },
     },
   },
 }
