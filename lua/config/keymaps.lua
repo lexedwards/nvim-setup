@@ -32,6 +32,15 @@ map("i", "<A-k>", "<esc><cmd>m .-2<cr>==gi", { desc = "Move Up" })
 map("v", "<A-j>", ":m '>+1<cr>gv=gv", { desc = "Move Down" })
 map("v", "<A-k>", ":m '<-2<cr>gv=gv", { desc = "Move Up" })
 
+-- Move Lines (MacOs Meta -> Alt)
+
+map("n", "∆", "<cmd>m .+1<cr>==", { desc = "Move Down" })
+map("n", "˚", "<cmd>m .-2<cr>==", { desc = "Move Up" })
+map("i", "∆", "<esc><cmd>m .+1<cr>==gi", { desc = "Move Down" })
+map("i", "˚", "<esc><cmd>m .-2<cr>==gi", { desc = "Move Up" })
+map("v", "∆", ":m '>+1<cr>gv=gv", { desc = "Move Down" })
+map("v", "˚", ":m '<-2<cr>gv=gv", { desc = "Move Up" })
+
 -- buffers
 map("n", "<S-h>", "<cmd>bprevious<cr>", { desc = "Prev Buffer" })
 map("n", "<S-l>", "<cmd>bnext<cr>", { desc = "Next Buffer" })
