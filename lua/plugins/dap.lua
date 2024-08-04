@@ -57,25 +57,6 @@ return {
               "!**/node_modules/**",
             },
           },
-          {
-            type = "pwa-node",
-            request = "attach",
-            name = "Attach",
-            processId = require("dap.utils").pick_process,
-            cwd = "${workspaceFolder}",
-            skipFiles = {
-              "${workspaceFolder}/node_modules/**/*.js",
-              "${workspaceFolder}/packages/**/node_modules/**/*.js",
-              "${workspaceFolder}/packages/**/**/node_modules/**/*.js",
-              "<node_internals>/**",
-              "node_modules/**",
-            },
-            sourceMaps = true,
-            resolveSourceMapLocations = {
-              "${workspaceFolder}/**",
-              "!**/node_modules/**",
-            },
-          },
         }
       end
 
