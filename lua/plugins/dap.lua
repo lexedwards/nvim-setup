@@ -20,6 +20,65 @@ return {
       require("dapui").setup()
       require("dap-go").setup()
 
+      -- Debugging Node was obviously an after thought
+      local mason_registry = require("mason-registry")
+      local node_debugger = mason_registry.get_package("js-debug-adapter")
+
+      local node_debugger_path = node_debugger:get_install_path() .. "/js-debug/src/dapDebugServer.js"
+
+      require("dap").adapters["pwa-node"] = {
+        type = "server",
+        host = "localhost",
+        port = "${port}",
+        executable = {
+          command = "node",
+          args = { node_debugger_path, "${port}" },
+        },
+      }
+
+      for _, language in ipairs({ "typescript", "javascript", "svelte", "astro" }) do
+        require("dap").configurations[language] = {
+          {
+            type = "pwa-node",
+            request = "launch",
+            name = "Launch file",
+            program = "${file}",
+            cwd = "${workspaceFolder}",
+            skipFiles = {
+              "${workspaceFolder}/node_modules/**/*.js",
+              "${workspaceFolder}/packages/**/node_modules/**/*.js",
+              "${workspaceFolder}/packages/**/**/node_modules/**/*.js",
+              "<node_internals>/**",
+              "node_modules/**",
+            },
+            sourceMaps = true,
+            resolveSourceMapLocations = {
+              "${workspaceFolder}/**",
+              "!**/node_modules/**",
+            },
+          },
+          {
+            type = "pwa-node",
+            request = "attach",
+            name = "Attach",
+            processId = require("dap.utils").pick_process,
+            cwd = "${workspaceFolder}",
+            skipFiles = {
+              "${workspaceFolder}/node_modules/**/*.js",
+              "${workspaceFolder}/packages/**/node_modules/**/*.js",
+              "${workspaceFolder}/packages/**/**/node_modules/**/*.js",
+              "<node_internals>/**",
+              "node_modules/**",
+            },
+            sourceMaps = true,
+            resolveSourceMapLocations = {
+              "${workspaceFolder}/**",
+              "!**/node_modules/**",
+            },
+          },
+        }
+      end
+
       require("nvim-dap-virtual-text").setup()
 
       dap.listeners.before.attach.dapui_config = function()

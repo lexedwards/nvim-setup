@@ -44,6 +44,7 @@ return {
       ensure_installed = {
         "delve",
         "codelldb",
+        "js",
       },
     },
   },
