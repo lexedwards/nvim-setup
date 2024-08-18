@@ -22,19 +22,23 @@ return {
 
       -- Debugging Node was obviously an after thought
       local mason_registry = require("mason-registry")
-      local node_debugger = mason_registry.get_package("js-debug-adapter")
 
-      local node_debugger_path = node_debugger:get_install_path() .. "/js-debug/src/dapDebugServer.js"
-
-      require("dap").adapters["pwa-node"] = {
+      local node_debugger = {
         type = "server",
         host = "localhost",
         port = "${port}",
         executable = {
           command = "node",
-          args = { node_debugger_path, "${port}" },
+          args = {
+            mason_registry.get_package("js-debug-adapter"):get_install_path() .. "/js-debug/src/dapDebugServer.js",
+            "${port}",
+          },
         },
       }
+
+      for _, type in ipairs({ "pwa-node", "node" }) do
+        require("dap").adapters[type] = node_debugger
+      end
 
       for _, language in ipairs({ "typescript", "javascript", "svelte", "astro" }) do
         require("dap").configurations[language] = {
@@ -83,6 +87,7 @@ return {
       { "<leader>d[", ":lua require'dap'.step_out()<CR>", desc = "Step Out" },
       { "<leader>dr", ":lua require'dap'.run_to_cursor<CR>", desc = "Run to Cursor" },
       { "<leader>du", ":lua require'dapui'.toggle({})<CR>", desc = "UI Toggle" },
+      { "<leader>dl", ":lua require'dap.ext.vscode'.load_launchjs()<CR>", desc = "Load Launch.json" },
     },
   },
 }
