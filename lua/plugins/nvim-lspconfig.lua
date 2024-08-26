@@ -52,7 +52,6 @@ return {
         lua_ls = {},
         marksman = {},
         mdx_analyzer = {},
-        rust_analyzer = {},
         svelte = {},
         taplo = {},
         tsserver = {
