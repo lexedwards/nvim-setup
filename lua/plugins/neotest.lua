@@ -8,16 +8,16 @@ return {
       "antoinemadec/FixCursorHold.nvim",
       "nvim-treesitter/nvim-treesitter",
       "nvim-neotest/neotest-go",
-      "rouge8/neotest-rust",
+      "rustaceanvim",
     },
-    opts = {
-      adapters = {
-        ["neotest-go"] = {},
-        ["neotest-rust"] = {
-          dap_adapter = "lldb",
+    opts = function()
+      return {
+        adapters = {
+          ["neotest-go"] = {},
+          require("rustaceanvim.neotest"),
         },
-      },
-    },
+      }
+    end,
     config = function(_, opts)
       local neotest_ns = vim.api.nvim_create_namespace("neotest")
       vim.diagnostic.config({

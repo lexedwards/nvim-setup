@@ -13,6 +13,13 @@ return {
         dependencies = "copilot.lua",
         opts = {},
       },
+      {
+        "saecki/crates.nvim",
+        event = { "BufRead Cargo.toml" },
+        config = function()
+          require("crates").setup()
+        end,
+      },
     },
     opts = function()
       local cmp = require("cmp")
@@ -22,6 +29,7 @@ return {
           { name = "copilot" },
           { name = "nvim_lsp" },
           { name = "path" },
+          { name = "crates" },
         }, {
           { name = "buffer" },
         }),
