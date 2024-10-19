@@ -54,7 +54,7 @@ return {
         mdx_analyzer = {},
         svelte = {},
         taplo = {},
-        tsserver = {
+        ts_ls = {
           server_capabilities = {
             documentFormattingProvider = false,
           },

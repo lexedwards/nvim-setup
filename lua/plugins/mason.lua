@@ -28,7 +28,7 @@ return {
         "marksman",
         "rust_analyzer",
         "svelte",
-        "tsserver",
+        "ts_ls",
       },
     },
     dependencies = {
