@@ -59,6 +59,7 @@ return {
     opts = {
       ensure_installed = {
         "cfn-lint",
+        "codespell",
         "goimports",
         "gofumpt",
         "gomodifytags",
