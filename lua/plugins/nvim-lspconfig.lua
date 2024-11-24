@@ -18,6 +18,7 @@ return {
       },
       servers = {
         astro = {},
+        biome = {},
         eslint = {
           settings = {
             workingDirectories = { mode = "auto" },

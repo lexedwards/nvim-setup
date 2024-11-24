@@ -39,7 +39,7 @@ return {
       opts.formatters_by_ft.lua = { "stylua" }
 
       for _, ft in ipairs(prettier_support) do
-        opts.formatters_by_ft[ft] = { "prettierd", "prettier", stop_after_first = true }
+        opts.formatters_by_ft[ft] = { "biome", "prettier", stop_after_first = true }
       end
 
       opts.format_on_save = function(bufnr)

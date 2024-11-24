@@ -21,6 +21,7 @@ return {
       automatic_installation = false,
       ensure_installed = {
         "astro",
+        "biome",
         "eslint",
         "gopls",
         "jsonls",
@@ -57,11 +58,12 @@ return {
     },
     opts = {
       ensure_installed = {
+        "cfn-lint",
         "goimports",
         "gofumpt",
         "gomodifytags",
         "markdownlint",
-        "prettierd",
+        "prettier",
         "stylua",
       },
     },
