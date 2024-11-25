@@ -42,6 +42,15 @@ return {
         opts.formatters_by_ft[ft] = { "biome", "prettier", stop_after_first = true }
       end
 
+      opts.formatters = opts.formatters or {}
+
+      opts.formatters.biome = {
+        require_cwd = true,
+      }
+      opts.formatters.prettier = {
+        require_cwd = true,
+      }
+
       opts.format_on_save = function(bufnr)
         -- Disable with a global or buffer-local variable
         if vim.g.disable_autoformat or vim.b[bufnr].disable_autoformat then
@@ -53,7 +62,7 @@ return {
           return
         end
         -- ...additional logic...
-        return { timeout_ms = 500, lsp_format = "fallback" }
+        return { timeout_ms = 500, lsp_format = "never" }
       end
     end,
   },
