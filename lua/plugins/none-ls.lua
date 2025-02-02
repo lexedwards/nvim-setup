@@ -9,9 +9,9 @@ return {
         nls.builtins.code_actions.impl,
         nls.builtins.formatting.goimports,
         nls.builtins.formatting.gofumpt,
-        nls.builtins.diagnostics.markdownlint,
-        nls.builtins.diagnostics.codespell,
-        nls.builtins.diagnostics.cfn_lint,
+        -- nls.builtins.diagnostics.markdownlint,
+        -- nls.builtins.diagnostics.codespell,
+        -- nls.builtins.diagnostics.cfn_lint,
       })
     end,
   },
