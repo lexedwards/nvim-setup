@@ -15,7 +15,7 @@ return {
       json = { "cfn_lint" },
       yaml = { "cfn_lint" },
       markdown = { "markdownlint" },
-      -- ["*"] = { "codespell" },
+      ["*"] = { "cspell" },
     },
     linters = {
       cfn_lint = {
@@ -53,7 +53,7 @@ return {
           return false
         end,
       },
-      codespell = {},
+      cspell = {},
       markdownlint = {},
     },
   },
