@@ -19,25 +19,25 @@ return {
         changedelete = { text = "▎" },
       },
       on_attach = function(buffer)
-        local gs = package.loaded.gitsigns
+        local gs = require("gitsigns")
 
         local function map(mode, l, r, desc)
           vim.keymap.set(mode, l, r, { buffer = buffer, desc = desc })
         end
 
-      -- stylua: ignore start
-      map("n", "]h", function()
-        if vim.wo.diff then
-          vim.cmd.normal({ "]c", bang = true })
-        else
-          gs.nav_hunk("next")
-        end
-      end, "Next Hunk")
-      map("n", "[h", function()
-        if vim.wo.diff then
-          vim.cmd.normal({ "[c", bang = true })
-        else
-          gs.nav_hunk("prev")
+        -- stylua: ignore start
+        map("n", "]h", function()
+          if vim.wo.diff then
+            vim.cmd.normal({ "]c", bang = true })
+          else
+            gs.nav_hunk("next")
+          end
+        end, "Next Hunk")
+        map("n", "[h", function()
+          if vim.wo.diff then
+            vim.cmd.normal({ "[c", bang = true })
+          else
+            gs.nav_hunk("prev")
         end
       end, "Prev Hunk")
       map("n", "]H", function() gs.nav_hunk("last") end, "Last Hunk")

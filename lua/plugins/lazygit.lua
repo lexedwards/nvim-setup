@@ -1,5 +1,4 @@
 return {
-
   {
     "kdheepak/lazygit.nvim",
     cmd = {
