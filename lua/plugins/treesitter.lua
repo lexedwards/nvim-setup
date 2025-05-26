@@ -29,6 +29,7 @@ return {
         "gosum",
         "gowork",
         "graphql",
+        "hcl",
         "html",
         "javascript",
         "jsdoc",

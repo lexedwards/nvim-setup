@@ -30,6 +30,7 @@ return {
         "rust_analyzer",
         "svelte",
         "ts_ls",
+        "terraformls",
       },
     },
     dependencies = {
@@ -67,6 +68,7 @@ return {
         -- "markdownlint",
         "prettier",
         "stylua",
+        "tflint",
       },
     },
   },

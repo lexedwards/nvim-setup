@@ -92,10 +92,11 @@ return {
       },
     },
     config = function(_, opts)
-      local lspconfig = require("lspconfig")
+      -- local lspconfig = require("lspconfig")
 
       for server, serverOpts in pairs(opts.servers) do
-        lspconfig[server].setup(serverOpts)
+        vim.lsp.config(server, serverOpts)
+        -- lspconfig[server].setup(serverOpts)
       end
 
       vim.api.nvim_create_autocmd("LspAttach", {

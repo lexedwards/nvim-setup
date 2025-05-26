@@ -1,8 +1,8 @@
 return {
-
   {
     "hrsh7th/nvim-cmp",
     version = false,
+    enabled = false,
     event = "InsertEnter",
     dependencies = {
       "hrsh7th/cmp-nvim-lsp",
