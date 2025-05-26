@@ -13,9 +13,6 @@ return {
       },
     },
     opts = {
-      inlay_hints = {
-        enabled = true,
-      },
       servers = {
         astro = {},
         biome = {},
@@ -59,6 +56,33 @@ return {
           server_capabilities = {
             documentFormattingProvider = false,
           },
+          settings = {
+            javascript = {
+              inlayHints = {
+                includeInlayEnumMemberValueHints = true,
+                includeInlayFunctionLikeReturnTypeHints = true,
+                includeInlayFunctionParameterTypeHints = true,
+                includeInlayParameterNameHints = "all", -- 'none' | 'literals' | 'all';
+                includeInlayParameterNameHintsWhenArgumentMatchesName = true,
+                includeInlayPropertyDeclarationTypeHints = true,
+                includeInlayVariableTypeHints = true,
+                includeInlayVariableTypeHintsWhenTypeMatchesName = true,
+              },
+            },
+
+            typescript = {
+              inlayHints = {
+                includeInlayEnumMemberValueHints = true,
+                includeInlayFunctionLikeReturnTypeHints = true,
+                includeInlayFunctionParameterTypeHints = true,
+                includeInlayParameterNameHints = "all", -- 'none' | 'literals' | 'all';
+                includeInlayParameterNameHintsWhenArgumentMatchesName = true,
+                includeInlayPropertyDeclarationTypeHints = true,
+                includeInlayVariableTypeHints = true,
+                includeInlayVariableTypeHintsWhenTypeMatchesName = true,
+              },
+            },
+          },
         },
         yamlls = {
           yaml = {
@@ -99,6 +123,16 @@ return {
         -- lspconfig[server].setup(serverOpts)
       end
 
+      vim.api.nvim_create_autocmd("User", {
+        pattern = "LspSupportsMethod",
+        callback = function(args)
+          local buffer = args.data.buffer ---@type number
+          if vim.api.nvim_buf_is_valid(buffer) and vim.bo[buffer].buftype == "" then
+            vim.lsp.inlay_hint.enable(true, { bufnr = buffer })
+          end
+        end,
+      })
+
       vim.api.nvim_create_autocmd("LspAttach", {
 
         callback = function()
@@ -115,6 +149,9 @@ return {
           vim.keymap.set("n", "<leader>cr", vim.lsp.buf.rename, { desc = "Rename" })
           vim.keymap.set("n", "<leader>ca", fzf.lsp_code_actions, { desc = "Action" })
           vim.keymap.set("n", "<leader>cd", vim.diagnostic.open_float, { desc = "Line Diagnostic" })
+          vim.keymap.set("n", "<leader>ch", function()
+            vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled({ 0 }), { 0 })
+          end, { desc = "Enable/Disable Inline Hints" })
         end,
       })
     end,
