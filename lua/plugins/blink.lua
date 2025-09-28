@@ -9,7 +9,7 @@ return {
       default = { "lsp", "path", "snippets", "buffer", "codecompanion", "copilot" },
       providers = {
         lsp = {
-          min_keyword_length = 2,
+          min_keyword_length = 0,
           score_offset = 0,
         },
         path = {

@@ -77,11 +77,17 @@ return {
         })
       end,
     },
+    {
+      "lexedwards/ollama-addons.nvim",
+      opts = {
+        url = "OLLAMA_API_URL",
+      },
+    },
   },
   opts = {
     opts = {
       language = "English",
-      log_level = "ERROR",
+      log_level = "TRACE",
       system_prompt = system_prompt,
     },
     extensions = {
@@ -102,37 +108,30 @@ return {
       },
     },
     adapters = {
-      opts = {
-        show_default = false,
+      http = {
+        opts = {
+          show_defaults = false,
+        },
+        copilot = function()
+          return require("codecompanion.adapters").extend("copilot", {
+            schema = {
+              model = {
+                -- default = "gpt-4.1",
+              },
+            },
+          })
+        end,
+        ollama = function()
+          return require("ollama-addons").adapter
+        end,
       },
-      copilot = function()
-        return require("codecompanion.adapters").extend("copilot", {
-          schema = {
-            model = {
-              default = "gpt-4.1",
-            },
-          },
-        })
-      end,
-      ollama = function()
-        return require("codecompanion.adapters").extend("ollama", {
-          schema = {
-            model = {
-              default = "qwen3:8b",
-            },
-            num_ctx = {
-              default = 20000,
-            },
-          },
-        })
-      end,
     },
     strategies = {
       chat = {
-        adapter = "copilot",
+        adapter = "ollama",
         roles = {
           user = "Me",
-          --@type string|fun(adapter: CodeCompanion.Adapter): string
+          ---@type string|fun(adapter: CodeCompanion.Adapter): string
           llm = function(adapter)
             return "AI (" .. adapter.formatted_name .. ")"
           end,
