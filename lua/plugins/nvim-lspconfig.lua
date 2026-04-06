@@ -52,6 +52,8 @@ return {
         mdx_analyzer = {},
         svelte = {},
         taplo = {},
+        terraformls = {},
+        -- tofu_ls = {},
         ts_ls = {
           server_capabilities = {
             documentFormattingProvider = false,
@@ -116,11 +118,8 @@ return {
       },
     },
     config = function(_, opts)
-      -- local lspconfig = require("lspconfig")
-
       for server, serverOpts in pairs(opts.servers) do
         vim.lsp.config(server, serverOpts)
-        -- lspconfig[server].setup(serverOpts)
       end
 
       vim.api.nvim_create_autocmd("User", {
@@ -153,10 +152,8 @@ return {
           local bufnr = args.buf ---@type number
           local client = vim.lsp.get_client_by_id(args.data.client_id)
           if client.supports_method("textDocument/inlayHint") then
-            -- vim.lsp.inlay_hint.enable(true, { bufnr = bufnr })
             vim.keymap.set("n", "<leader>ch", function()
               vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled({ bufnr = bufnr }), { bufnr = bufnr })
-              -- vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled({ 0 }), { 0 })
             end, { buffer = bufnr, desc = "Enable/Disable Inline Hints" })
           end
         end,

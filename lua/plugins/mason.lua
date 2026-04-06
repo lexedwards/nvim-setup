@@ -28,8 +28,8 @@ return {
         "lua_ls",
         "marksman",
         "svelte",
-        "ts_ls",
         "terraformls",
+        "ts_ls",
       },
     },
     dependencies = {
