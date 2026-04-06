@@ -14,7 +14,7 @@ return {
     linters_by_ft = {
       json = { "cfn_lint" },
       yaml = { "cfn_lint" },
-      markdown = { "markdownlint" },
+      markdown = { "markdownlint-cli2" },
       ["*"] = { "cspell" },
     },
     linters = {
@@ -54,7 +54,7 @@ return {
         end,
       },
       cspell = {},
-      markdownlint = {},
+      ["markdownlint-cli2"] = {},
     },
   },
   config = function(_, opts)

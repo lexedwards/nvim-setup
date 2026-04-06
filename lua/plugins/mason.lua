@@ -60,11 +60,11 @@ return {
       ensure_installed = {
         -- "cfn-lint",
         -- "codespell",
-        -- "cspell",
+        "cspell",
         "goimports",
         "gofumpt",
         "gomodifytags",
-        -- "markdownlint",
+        "markdownlint-cli2",
         "prettier",
         "stylua",
         "tflint",
