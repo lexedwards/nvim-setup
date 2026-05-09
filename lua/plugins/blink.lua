@@ -6,7 +6,7 @@ return {
   ---@type blink.cmp.Config
   opts = {
     sources = {
-      default = { "lsp", "path", "snippets", "buffer", "codecompanion", "copilot" },
+      default = { "lsp", "path", "snippets", "buffer", "copilot" },
       providers = {
         lsp = {
           min_keyword_length = 0,
